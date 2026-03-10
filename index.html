@@ -3,45 +3,40 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NOURRI – Functional Wellness Treats for Dogs</title>
+  <title>nourri – Functional Wellness for Your Pets</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
 
-    /* ─────────────────────────────────────────────
-       Tokens
-    ───────────────────────────────────────────── */
+    /* ── Tokens ─────────────────────────────────────── */
     :root {
-      --green-900: #1a3209;
-      --green-800: #2d5016;
-      --green-600: #4a7c2c;
-      --green-200: #c8ddb0;
-      --green-100: #e4f0d8;
-      --green-50:  #f2f8ec;
-      --cream:     #faf8f4;
-      --sand:      #f3ede3;
-      --white:     #ffffff;
-      --ink:       #1e1e1e;
-      --ink-60:    #5e6060;
-      --ink-30:    #b0b4b2;
-      --radius-sm: 10px;
-      --radius-md: 18px;
-      --radius-lg: 28px;
-      --radius-xl: 40px;
+      --pink-bg:     #fdeef2;
+      --pink-mid:    #fad4e0;
+      --pink-deep:   #f4a7c0;
+      --pink-vivid:  #f06292;
+      --pink-text:   #e91e7a;
+      --blush:       #fff0f4;
+      --dark:        #1a1414;
+      --dark-60:     rgba(26,20,20,.6);
+      --dark-30:     rgba(26,20,20,.3);
+      --white:       #ffffff;
+      --border:      rgba(240,98,146,.18);
+      --r-sm: 8px;
+      --r-md: 16px;
+      --r-lg: 24px;
+      --r-xl: 40px;
     }
 
-    /* ─────────────────────────────────────────────
-       Base
-    ───────────────────────────────────────────── */
+    /* ── Reset ──────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--cream);
-      color: var(--ink);
-      font-size: 16px;
-      line-height: 1.6;
+      font-family: 'Inter', sans-serif;
+      background: var(--pink-bg);
+      color: var(--dark);
+      font-size: 15px;
+      line-height: 1.65;
       -webkit-font-smoothing: antialiased;
     }
     img { display: block; max-width: 100%; }
@@ -49,652 +44,577 @@
     ul { list-style: none; }
     button { cursor: pointer; border: none; background: none; font: inherit; }
 
-    /* ─────────────────────────────────────────────
-       Typography scale
-    ───────────────────────────────────────────── */
-    .serif { font-family: 'DM Serif Display', serif; }
-    h1 { font-family: 'DM Serif Display', serif; font-size: clamp(38px, 5.5vw, 68px); line-height: 1.05; font-weight: 400; }
-    h2 { font-family: 'DM Serif Display', serif; font-size: clamp(28px, 3.5vw, 48px); line-height: 1.1;  font-weight: 400; }
-    h3 { font-family: 'DM Serif Display', serif; font-size: clamp(20px, 2vw,  28px); line-height: 1.2;  font-weight: 400; }
+    /* ── Type ───────────────────────────────────────── */
+    .serif { font-family: 'Playfair Display', serif; }
+    h1 { font-family: 'Playfair Display', serif; font-size: clamp(40px, 5.5vw, 76px); line-height: 1.05; font-weight: 400; }
+    h2 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 3.5vw, 50px); line-height: 1.1;  font-weight: 400; }
+    h3 { font-family: 'Playfair Display', serif; font-size: clamp(20px, 2vw,  28px); line-height: 1.2;  font-weight: 400; }
 
-    /* ─────────────────────────────────────────────
-       Layout helpers
-    ───────────────────────────────────────────── */
-    .wrap    { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
-    .wrap-lg { max-width: 1340px; margin: 0 auto; padding: 0 24px; }
-    .section { padding: 88px 0; }
+    /* ── Layout ─────────────────────────────────────── */
+    .wrap    { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
+    .wrap-lg { max-width: 1340px; margin: 0 auto; padding: 0 28px; }
+    .section { padding: 96px 0; }
+    .section--blush { background: var(--blush); }
+    .section--white { background: var(--white); }
+    .section--dark  { background: var(--dark); }
+    .hidden { display: none !important; }
 
-    /* ─────────────────────────────────────────────
-       Buttons
-    ───────────────────────────────────────────── */
+    /* ── Buttons ────────────────────────────────────── */
     .btn {
       display: inline-flex; align-items: center; gap: 8px;
-      padding: 14px 30px;
-      border-radius: 999px;
-      font-size: 14px; font-weight: 600; letter-spacing: .01em;
-      transition: transform .18s, box-shadow .18s, background .18s, color .18s;
+      padding: 13px 30px; border-radius: 999px;
+      font-size: 13px; font-weight: 500; letter-spacing: .04em;
+      text-transform: uppercase;
+      transition: all .2s;
+      font-family: 'Inter', sans-serif;
     }
     .btn:hover { transform: translateY(-2px); }
-    .btn-dark  { background: var(--green-800); color: #fff; }
-    .btn-dark:hover { background: var(--green-900); box-shadow: 0 8px 24px rgba(45,80,22,.28); }
-    .btn-outline { border: 1.5px solid var(--green-800); color: var(--green-800); }
-    .btn-outline:hover { background: var(--green-800); color: #fff; }
-    .btn-sand { background: var(--sand); color: var(--ink); }
-    .btn-sand:hover { background: var(--green-200); }
-    .btn-white { background: var(--white); color: var(--green-800); }
-    .btn-white:hover { background: var(--green-50); }
+    .btn-pink  { background: var(--pink-vivid); color: #fff; }
+    .btn-pink:hover  { background: #d81b60; box-shadow: 0 8px 28px rgba(240,98,146,.35); }
+    .btn-outline { border: 1.5px solid var(--dark); color: var(--dark); }
+    .btn-outline:hover { background: var(--dark); color: #fff; }
+    .btn-outline-pink { border: 1.5px solid var(--pink-vivid); color: var(--pink-vivid); }
+    .btn-outline-pink:hover { background: var(--pink-vivid); color: #fff; }
+    .btn-dark  { background: var(--dark); color: #fff; }
+    .btn-dark:hover { background: #2d1f1f; box-shadow: 0 8px 24px rgba(26,20,20,.25); }
+    .btn-white { background: #fff; color: var(--dark); }
+    .btn-white:hover { background: var(--pink-bg); }
 
-    /* ─────────────────────────────────────────────
-       Label / tag
-    ───────────────────────────────────────────── */
-    .label {
+    /* ── Labels ─────────────────────────────────────── */
+    .lbl {
       display: inline-block;
-      font-size: 11px; font-weight: 600; letter-spacing: .1em;
+      font-size: 10px; font-weight: 600; letter-spacing: .12em;
       text-transform: uppercase;
-      padding: 5px 14px;
-      border-radius: 999px;
+      padding: 5px 14px; border-radius: 999px;
     }
-    .label-green  { background: var(--green-100); color: var(--green-800); }
-    .label-sand   { background: var(--sand); color: var(--ink-60); }
-    .label-white  { background: rgba(255,255,255,.18); color: #fff; border: 1px solid rgba(255,255,255,.3); }
+    .lbl-pink  { background: var(--pink-mid); color: #9c1a5a; }
+    .lbl-dark  { background: var(--dark); color: #fff; }
+    .lbl-ghost { border: 1px solid rgba(255,255,255,.3); color: rgba(255,255,255,.75); }
 
-    /* ─────────────────────────────────────────────
-       NAV
-    ───────────────────────────────────────────── */
+    /* ── NAV ────────────────────────────────────────── */
     .nav-wrap {
       position: sticky; top: 0; z-index: 90;
-      background: rgba(250,248,244,.94);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--green-100);
+      background: rgba(253,238,242,.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
     }
     .nav {
-      height: 64px;
-      display: flex; align-items: center; justify-content: space-between; gap: 24px;
+      height: 66px;
+      display: flex; align-items: center; justify-content: space-between;
     }
     .nav__logo {
-      font-family: 'DM Serif Display', serif;
-      font-size: 22px; letter-spacing: -.02em;
-      color: var(--green-800);
-      display: flex; align-items: center; gap: 7px;
+      display: flex; align-items: center; gap: 10px;
       flex-shrink: 0;
     }
-    .nav__logo-dot {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: var(--green-600);
+    .nav__logo img {
+      height: 42px; width: auto;
+    }
+    .nav__logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; font-style: italic;
+      color: var(--pink-text);
+      letter-spacing: -.01em;
     }
     .nav__links {
-      display: flex; align-items: center; gap: 32px;
+      display: flex; align-items: center; gap: 36px;
     }
     .nav__links a {
-      font-size: 14px; font-weight: 500; color: var(--ink-60);
+      font-size: 13px; font-weight: 400; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--dark);
       transition: color .15s;
     }
-    .nav__links a:hover { color: var(--ink); }
+    .nav__links a:hover { color: var(--pink-vivid); }
     .nav__right {
-      display: flex; align-items: center; gap: 12px;
-      flex-shrink: 0;
+      display: flex; align-items: center; gap: 14px; flex-shrink: 0;
     }
-    .nav__cart {
-      position: relative;
-      display: flex; align-items: center; gap: 7px;
-      background: var(--green-800); color: #fff;
-      border-radius: 999px; padding: 9px 18px;
-      font-size: 13px; font-weight: 600;
-      transition: background .18s;
+    .nav__cart-btn {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 500; letter-spacing: .04em;
+      text-transform: uppercase; color: var(--dark);
+      padding: 8px 0;
+      transition: color .15s;
     }
-    .nav__cart:hover { background: var(--green-900); }
+    .nav__cart-btn:hover { color: var(--pink-vivid); }
     .nav__cart-count {
-      background: #fff; color: var(--green-800);
+      background: var(--pink-vivid); color: #fff;
       border-radius: 999px; font-size: 10px; font-weight: 700;
       padding: 1px 6px; min-width: 18px; text-align: center;
     }
-    .nav__menu-btn { display: none; }
+    .nav__menu { display: none; }
 
-    /* ─────────────────────────────────────────────
-       HERO
-    ───────────────────────────────────────────── */
+    /* ── HERO ───────────────────────────────────────── */
     .hero {
-      background: var(--green-50);
+      position: relative;
+      min-height: 90vh;
+      background: #100a0a;
+      display: flex; align-items: flex-end;
       overflow: hidden;
-      padding: 80px 0 0;
     }
-    .hero__inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      align-items: end;
+    .hero__bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(160deg, #1a0a0e 0%, #2d1218 40%, #0d0608 100%);
     }
-    .hero__text { padding-bottom: 80px; }
-    .hero__eyebrow {
-      display: flex; align-items: center; gap: 10px;
-      margin-bottom: 28px;
+    /* Decorative blurred orbs for depth */
+    .hero__orb {
+      position: absolute; border-radius: 50%;
+      filter: blur(80px); opacity: .25; pointer-events: none;
     }
-    .hero__eyebrow span { font-size: 13px; color: var(--ink-60); font-weight: 500; }
-    .hero__eyebrow::after {
-      content: '';
-      display: block; width: 48px; height: 1.5px;
-      background: var(--green-200);
+    .hero__orb--1 { width:500px; height:500px; background:#e91e7a; top:-120px; right:-80px; }
+    .hero__orb--2 { width:300px; height:300px; background:#9c27b0; bottom:100px; left:10%; }
+    .hero__orb--3 { width:200px; height:200px; background:#f06292; top:30%; right:25%; }
+    .hero__content {
+      position: relative; z-index: 2;
+      width: 100%; padding: 0 0 80px;
     }
-    .hero h1 { color: var(--green-900); margin-bottom: 24px; }
-    .hero h1 em { font-style: italic; color: var(--green-600); }
+    .hero h1 {
+      color: var(--pink-deep);
+      font-style: italic;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
     .hero__sub {
-      font-size: 17px; color: var(--ink-60);
-      max-width: 440px; line-height: 1.75;
-      margin-bottom: 40px;
+      text-align: center; margin-top: 24px;
+      font-size: 15px; color: rgba(255,255,255,.5);
+      letter-spacing: .04em; text-transform: uppercase;
     }
-    .hero__actions { display: flex; gap: 14px; flex-wrap: wrap; }
-    .hero__trust {
-      margin-top: 40px;
-      display: flex; align-items: center; gap: 20px;
-      font-size: 13px; color: var(--ink-60);
+    .hero__ctas {
+      display: flex; justify-content: center;
+      gap: 14px; margin-top: 40px; flex-wrap: wrap;
     }
-    .hero__trust-item { display: flex; align-items: center; gap: 7px; }
-    .hero__trust-item::before { content: '✓'; color: var(--green-600); font-weight: 700; }
-    .hero__visual {
-      align-self: end;
-      display: flex; justify-content: center; gap: 18px;
-      padding: 0 20px;
+    /* Floating product cards in hero */
+    .hero__products {
+      position: absolute; inset: 0; z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
     }
-    .hero-cookie {
-      width: 160px;
-      border-radius: 24px;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: flex-end;
-      padding: 24px 16px 20px;
-      gap: 10px;
-      box-shadow: 0 12px 40px rgba(0,0,0,.1);
-      transition: transform .3s;
+    .hero-pip {
+      position: absolute;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(240,98,146,.2);
+      border-radius: var(--r-md);
+      padding: 16px 20px;
+      backdrop-filter: blur(10px);
+      display: flex; align-items: center; gap: 12px;
+      animation: floatPip 6s ease-in-out infinite;
     }
-    .hero-cookie:nth-child(2) { transform: translateY(-24px); }
-    .hero-cookie:nth-child(4) { transform: translateY(-12px); }
-    .hero-cookie:hover { transform: translateY(-6px) !important; }
-    .hero-cookie--j { background: linear-gradient(160deg, #fefce8, #fde68a); }
-    .hero-cookie--c { background: linear-gradient(160deg, #f5f3ff, #ede9fe); }
-    .hero-cookie--d { background: linear-gradient(160deg, #f0fdf4, #dcfce7); }
-    .hero-cookie--s { background: linear-gradient(160deg, #fff1f2, #ffe4e6); }
-    .hero-cookie__icon { font-size: 52px; }
-    .hero-cookie__name {
-      font-size: 12px; font-weight: 600; color: var(--ink);
-      text-align: center; line-height: 1.3;
+    .hero-pip--1 { top: 15%; left:  6%; animation-delay: 0s;   }
+    .hero-pip--2 { top: 12%; right: 6%; animation-delay: 1.5s; }
+    .hero-pip--3 { top: 55%; left:  4%; animation-delay: 3s;   }
+    @keyframes floatPip {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-10px); }
     }
-    .hero-cookie__price {
-      font-size: 13px; font-weight: 700;
-      color: var(--green-800);
+    .hero-pip__icon { font-size: 28px; }
+    .hero-pip__text { display: flex; flex-direction: column; }
+    .hero-pip__name { font-size: 12px; font-weight: 600; color: #fff; }
+    .hero-pip__price { font-size: 11px; color: var(--pink-deep); margin-top: 2px; }
+    .hero__scroll {
+      position: absolute; bottom: 28px; left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      color: rgba(255,255,255,.3); font-size: 10px; letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .hero__scroll-line {
+      width: 1px; height: 48px;
+      background: linear-gradient(to bottom, rgba(255,255,255,.3), transparent);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+      0%, 100% { transform: scaleY(1); opacity: .4; }
+      50%       { transform: scaleY(.6); opacity: 1; }
     }
 
-    /* ─────────────────────────────────────────────
-       TICKER STRIP
-    ───────────────────────────────────────────── */
-    .ticker { background: var(--green-800); overflow: hidden; padding: 14px 0; }
-    .ticker__track {
-      display: flex; gap: 0;
-      animation: ticker 28s linear infinite;
-      white-space: nowrap;
+    /* ── MARQUEE ────────────────────────────────────── */
+    .marquee { background: var(--pink-vivid); padding: 13px 0; overflow: hidden; }
+    .marquee__track {
+      display: flex; gap: 0; white-space: nowrap;
+      animation: marquee 30s linear infinite;
     }
-    .ticker__track:hover { animation-play-state: paused; }
-    @keyframes ticker {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
-    .ticker__item {
+    .marquee__track:hover { animation-play-state: paused; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .marquee__item {
       display: inline-flex; align-items: center; gap: 10px;
-      padding: 0 40px; color: rgba(255,255,255,.85);
-      font-size: 13px; font-weight: 500; letter-spacing: .01em;
+      padding: 0 36px;
+      font-size: 12px; font-weight: 500; letter-spacing: .08em;
+      text-transform: uppercase; color: rgba(255,255,255,.9);
       flex-shrink: 0;
     }
-    .ticker__dot { width: 4px; height: 4px; background: var(--green-200); border-radius: 50%; }
+    .marquee__sep { color: rgba(255,255,255,.4); font-size: 16px; }
 
-    /* ─────────────────────────────────────────────
-       SECTION HEADER (reusable)
-    ───────────────────────────────────────────── */
-    .sh { margin-bottom: 56px; }
-    .sh--center { text-align: center; }
-    .sh--center p { margin: 12px auto 0; }
-    .sh h2 { color: var(--green-900); margin-top: 12px; }
-    .sh p   { max-width: 560px; color: var(--ink-60); font-size: 16px; line-height: 1.75; }
+    /* ── SECTION HEADER ─────────────────────────────── */
+    .sh { margin-bottom: 60px; }
+    .sh--c { text-align: center; }
+    .sh--c p { margin: 14px auto 0; }
+    .sh h2 { margin-top: 14px; }
+    .sh p  { max-width: 540px; color: var(--dark-60); font-size: 15px; line-height: 1.8; }
 
-    /* ─────────────────────────────────────────────
-       PRODUCTS
-    ───────────────────────────────────────────── */
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
-    .product-card {
+    /* ── PRODUCTS ───────────────────────────────────── */
+    .products { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+    .pc {
       background: var(--white);
-      border-radius: var(--radius-md);
+      border-radius: var(--r-lg);
       overflow: hidden;
-      border: 1px solid var(--green-100);
+      border: 1px solid var(--border);
       display: flex; flex-direction: column;
-      transition: transform .25s, box-shadow .25s;
+      transition: transform .28s, box-shadow .28s;
     }
-    .product-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 52px rgba(45,80,22,.13);
-    }
-    .product-card__plate {
+    .pc:hover { transform: translateY(-8px); box-shadow: 0 24px 56px rgba(240,98,146,.15); }
+    .pc__plate {
       aspect-ratio: 1;
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
-      gap: 8px; padding: 28px;
+      gap: 10px; padding: 32px;
       position: relative;
     }
-    .product-card__plate--j { background: linear-gradient(150deg,#fefce8,#fde68a66); }
-    .product-card__plate--c { background: linear-gradient(150deg,#f5f3ff,#ddd6fe66); }
-    .product-card__plate--d { background: linear-gradient(150deg,#f0fdf4,#bbf7d066); }
-    .product-card__plate--s { background: linear-gradient(150deg,#fff1f2,#fecdd366); }
-    .product-card__emoji { font-size: 68px; }
-    .product-card__tag {
-      position: absolute; top: 14px; left: 14px;
-      font-size: 10px; font-weight: 700;
+    .pc__plate--j { background: linear-gradient(150deg,#fff8e1,#ffe082 80%); }
+    .pc__plate--c { background: linear-gradient(150deg,#f3e5f5,#ce93d8 80%); }
+    .pc__plate--d { background: linear-gradient(150deg,#e8f5e9,#a5d6a7 80%); }
+    .pc__emoji { font-size: 80px; filter: drop-shadow(0 8px 16px rgba(0,0,0,.12)); }
+    .pc__tag {
+      position: absolute; top: 16px; left: 16px;
+      font-size: 10px; font-weight: 600;
       text-transform: uppercase; letter-spacing: .07em;
-      padding: 4px 11px; border-radius: 999px;
+      padding: 4px 12px; border-radius: 999px;
     }
-    .tag-j { background: #fef3c7; color: #92400e; }
-    .tag-c { background: #ede9fe; color: #4c1d95; }
-    .tag-d { background: #dcfce7; color: #14532d; }
-    .tag-s { background: #ffe4e6; color: #9f1239; }
-    .product-card__body { padding: 22px; flex: 1; display: flex; flex-direction: column; }
-    .product-card__name {
-      font-family: 'DM Serif Display', serif;
-      font-size: 18px; color: var(--ink);
-      margin-bottom: 7px;
+    .ptag-j { background: #fff8e1; color: #e65100; }
+    .ptag-c { background: #f3e5f5; color: #6a1b9a; }
+    .ptag-d { background: #e8f5e9; color: #1b5e20; }
+    .pc__body { padding: 28px; flex: 1; display: flex; flex-direction: column; }
+    .pc__name {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; font-weight: 400;
+      color: var(--dark); margin-bottom: 10px;
     }
-    .product-card__desc {
-      font-size: 13px; color: var(--ink-60);
-      line-height: 1.65; margin-bottom: 16px; flex: 1;
-    }
-    .product-card__pills {
-      display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px;
-    }
+    .pc__desc { font-size: 13px; color: var(--dark-60); line-height: 1.75; margin-bottom: 18px; flex: 1; }
+    .pc__pills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px; }
     .pill {
-      font-size: 11px; font-weight: 500;
-      padding: 3px 10px; border-radius: 999px;
-      background: var(--green-50); color: var(--green-600);
+      font-size: 11px; font-weight: 500; padding: 4px 12px;
+      border-radius: 999px; background: var(--pink-bg); color: #9c1a5a;
     }
-    .product-card__foot {
+    .pc__foot {
       display: flex; align-items: center; justify-content: space-between;
-      padding-top: 16px; border-top: 1px solid var(--green-100);
+      padding-top: 20px; border-top: 1px solid var(--border);
     }
-    .product-card__price {
-      font-family: 'DM Serif Display', serif;
-      font-size: 22px; color: var(--green-800);
+    .pc__price {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px; color: var(--dark);
     }
-    .product-card__price small { font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--ink-60); font-weight: 400; }
+    .pc__price small { font-family: 'Inter', sans-serif; font-size: 13px; color: var(--dark-60); font-weight: 400; }
     .add-btn {
-      display: flex; align-items: center; gap: 6px;
-      background: var(--green-800); color: #fff;
-      border-radius: 999px; padding: 9px 18px;
-      font-size: 13px; font-weight: 600;
-      transition: background .18s, transform .18s;
+      display: flex; align-items: center; gap: 7px;
+      background: var(--dark); color: #fff;
+      border-radius: 999px; padding: 10px 20px;
+      font-size: 12px; font-weight: 600; letter-spacing: .04em;
+      text-transform: uppercase;
+      transition: all .2s;
     }
-    .add-btn:hover { background: var(--green-900); transform: scale(1.03); }
+    .add-btn:hover { background: var(--pink-vivid); transform: scale(1.03); }
 
-    /* ─────────────────────────────────────────────
-       FUNCTIONAL BENEFITS (icon row)
-    ───────────────────────────────────────────── */
-    .benefits-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
+    /* ── STATEMENT ──────────────────────────────────── */
+    .statement { text-align: center; padding: 120px 28px; }
+    .statement h2 {
+      font-style: italic; color: var(--dark);
+      max-width: 820px; margin: 0 auto 32px;
     }
-    .benefit-card {
+    .statement p {
+      font-size: 16px; color: var(--dark-60);
+      max-width: 520px; margin: 0 auto 40px; line-height: 1.85;
+    }
+
+    /* ── BUNDLE ─────────────────────────────────────── */
+    .bundle {
+      background: var(--dark);
+      border-radius: var(--r-xl);
+      display: grid; grid-template-columns: 1fr 1fr;
+      overflow: hidden; min-height: 560px;
+    }
+    .bundle__copy { padding: 72px 64px; display: flex; flex-direction: column; justify-content: center; }
+    .bundle__copy h2 { color: #fff; margin: 16px 0 18px; }
+    .bundle__copy p  { color: rgba(255,255,255,.55); font-size: 15px; line-height: 1.85; margin-bottom: 36px; }
+    .bundle__list    { display: flex; flex-direction: column; gap: 13px; margin-bottom: 40px; }
+    .bundle__row {
+      display: flex; align-items: center; gap: 13px;
+      font-size: 14px; color: rgba(255,255,255,.7);
+    }
+    .bundle__dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .bundle__pricing { display: flex; align-items: baseline; gap: 16px; margin-bottom: 36px; }
+    .bundle__now  { font-family: 'Playfair Display', serif; font-size: 58px; color: var(--pink-deep); }
+    .bundle__was  { font-size: 18px; color: rgba(255,255,255,.25); text-decoration: line-through; }
+    .bundle__save {
+      background: rgba(240,98,146,.2); color: var(--pink-deep);
+      font-size: 11px; font-weight: 700; letter-spacing: .07em;
+      text-transform: uppercase; padding: 5px 14px; border-radius: 999px;
+    }
+    .bundle__visual {
+      background: rgba(255,255,255,.03);
+      display: flex; align-items: center; justify-content: center; padding: 56px;
+    }
+    .bundle__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .bcard {
+      width: 136px; height: 136px; border-radius: 20px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+      border: 1px solid rgba(255,255,255,.06);
+    }
+    .bcard__icon { font-size: 46px; }
+    .bcard__lbl  { font-size: 10px; font-weight: 600; color: rgba(255,255,255,.5); text-transform: uppercase; letter-spacing: .07em; text-align: center; }
+    .bcard--j { background: rgba(255,224,130,.08); }
+    .bcard--c { background: rgba(206,147,216,.08); }
+    .bcard--d { background: rgba(165,214,167,.08); }
+
+    /* ── 3-UP FEATURES ──────────────────────────────── */
+    .features { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+    .feat {
       background: var(--white);
-      border-radius: var(--radius-md);
-      padding: 36px 28px;
-      border: 1px solid var(--green-100);
+      padding: 52px 40px;
     }
-    .benefit-card__icon {
-      width: 56px; height: 56px;
-      border-radius: 16px;
-      background: var(--green-50);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 26px; margin-bottom: 22px;
+    .feat:first-child { border-radius: var(--r-lg) 0 0 var(--r-lg); }
+    .feat:last-child  { border-radius: 0 var(--r-lg) var(--r-lg) 0; }
+    .feat__num {
+      font-family: 'Playfair Display', serif;
+      font-size: 64px; font-style: italic;
+      color: var(--pink-mid);
+      line-height: 1; margin-bottom: 24px;
     }
-    .benefit-card h3 { color: var(--green-900); margin-bottom: 10px; font-size: 20px; }
-    .benefit-card p  { font-size: 14px; color: var(--ink-60); line-height: 1.75; }
+    .feat__icon { font-size: 32px; margin-bottom: 20px; }
+    .feat h3 { font-size: 20px; color: var(--dark); margin-bottom: 12px; }
+    .feat p  { font-size: 13px; color: var(--dark-60); line-height: 1.8; }
 
-    /* ─────────────────────────────────────────────
-       BUNDLE — full-width dark panel
-    ───────────────────────────────────────────── */
-    .bundle-panel {
-      background: var(--green-900);
-      border-radius: var(--radius-xl);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      overflow: hidden;
-      min-height: 520px;
-    }
-    .bundle-panel__text {
-      padding: 64px 56px;
-      display: flex; flex-direction: column; justify-content: center;
-    }
-    .bundle-panel__text h2 { color: #fff; margin: 14px 0 18px; }
-    .bundle-panel__text p  { color: rgba(255,255,255,.65); font-size: 15px; line-height: 1.8; margin-bottom: 32px; }
-    .bundle-includes { display: flex; flex-direction: column; gap: 12px; margin-bottom: 36px; }
-    .bundle-row {
-      display: flex; align-items: center; gap: 12px;
-      font-size: 14px; color: rgba(255,255,255,.78);
-    }
-    .bundle-row::before {
-      content: ''; width: 8px; height: 8px;
-      border-radius: 50%; flex-shrink: 0;
-    }
-    .bundle-row--j::before { background: #f59e0b; }
-    .bundle-row--c::before { background: #a78bfa; }
-    .bundle-row--d::before { background: #4ade80; }
-    .bundle-row--s::before { background: #fca5a5; }
-    .bundle-price-row { display: flex; align-items: baseline; gap: 14px; margin-bottom: 32px; }
-    .bundle-price { font-family: 'DM Serif Display', serif; font-size: 52px; color: var(--green-200); }
-    .bundle-was   { font-size: 18px; color: rgba(255,255,255,.28); text-decoration: line-through; }
-    .bundle-save  {
-      background: rgba(255,255,255,.1); color: var(--green-200);
-      font-size: 12px; font-weight: 700; letter-spacing: .06em;
-      padding: 5px 13px; border-radius: 999px;
-    }
-    .bundle-panel__visual {
-      background: rgba(255,255,255,.04);
-      display: flex; align-items: center; justify-content: center;
-      padding: 48px;
-    }
-    .bundle-cookies { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .bcookie {
-      width: 130px; height: 130px;
-      border-radius: 20px;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: 10px;
-    }
-    .bcookie__icon { font-size: 44px; }
-    .bcookie__lbl  { font-size: 10px; font-weight: 600; color: rgba(255,255,255,.6); text-transform: uppercase; letter-spacing: .06em; text-align: center; }
-    .bcookie--j { background: rgba(245,158,11,.15); }
-    .bcookie--c { background: rgba(167,139,250,.15); }
-    .bcookie--d { background: rgba(74,222,128,.15); }
-    .bcookie--s { background: rgba(252,165,165,.15); }
-
-    /* ─────────────────────────────────────────────
-       HOW IT'S MADE
-    ───────────────────────────────────────────── */
-    .process-grid {
-      display: grid;
-      grid-template-columns: repeat(4,1fr);
-      gap: 2px;
-    }
-    .process-step {
+    /* ── INGREDIENTS ────────────────────────────────── */
+    .ing-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 14px; }
+    .ing {
       background: var(--white);
-      padding: 40px 28px;
-      border-radius: 0;
-      position: relative;
-    }
-    .process-step:first-child { border-radius: var(--radius-md) 0 0 var(--radius-md); }
-    .process-step:last-child  { border-radius: 0 var(--radius-md) var(--radius-md) 0; }
-    .process-step__num {
-      font-family: 'DM Serif Display', serif;
-      font-size: 56px; color: var(--green-100);
-      line-height: 1; margin-bottom: 20px;
-    }
-    .process-step h4 { color: var(--green-800); margin-bottom: 10px; font-size: 15px; font-family:'DM Sans',sans-serif; font-weight:600; }
-    .process-step p  { font-size: 13px; color: var(--ink-60); line-height: 1.7; }
-
-    /* ─────────────────────────────────────────────
-       INGREDIENTS SHOWCASE
-    ───────────────────────────────────────────── */
-    .ingredients-grid {
-      display: grid;
-      grid-template-columns: repeat(6,1fr);
-      gap: 12px;
-    }
-    .ic {
-      background: var(--white);
-      border: 1px solid var(--green-100);
-      border-radius: var(--radius-sm);
-      padding: 20px 10px;
+      border-radius: var(--r-md);
+      padding: 28px 16px;
       text-align: center;
+      border: 1px solid var(--border);
       transition: transform .2s, box-shadow .2s;
     }
-    .ic:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(45,80,22,.1); }
-    .ic__icon { font-size: 30px; margin-bottom: 9px; }
-    .ic__name { font-size: 12px; font-weight: 600; color: var(--ink); margin-bottom: 3px; }
-    .ic__use  { font-size: 10px; color: var(--ink-60); }
+    .ing:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(240,98,146,.12); }
+    .ing__icon { font-size: 36px; margin-bottom: 12px; }
+    .ing__name { font-size: 12px; font-weight: 600; color: var(--dark); margin-bottom: 4px; }
+    .ing__use  { font-size: 11px; color: var(--dark-60); }
 
-    /* ─────────────────────────────────────────────
-       COMPARISON
-    ───────────────────────────────────────────── */
-    .compare-wrap {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+    /* ── PROCESS ────────────────────────────────────── */
+    .process { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; }
+    .pstep { text-align: center; }
+    .pstep__icon-wrap {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: var(--pink-mid);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px;
+      font-size: 28px;
     }
-    .compare-card {
-      border-radius: var(--radius-md); overflow: hidden;
-      border: 1px solid var(--green-100);
+    .pstep__num {
+      font-family: 'Playfair Display', serif;
+      font-size: 13px; font-style: italic; color: var(--pink-text);
+      letter-spacing: .06em; margin-bottom: 12px;
     }
-    .compare-card__head {
-      display: flex; align-items: center; gap: 12px;
-      padding: 20px 24px;
-    }
-    .compare-card--us   .compare-card__head { background: var(--green-800); color: #fff; }
-    .compare-card--them .compare-card__head { background: var(--sand); color: var(--ink-60); }
-    .compare-card__head h3 { font-family:'DM Sans',sans-serif; font-weight:700; font-size:17px; }
-    .compare-badge {
+    .pstep h4 { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--dark); margin-bottom: 10px; }
+    .pstep p  { font-size: 13px; color: var(--dark-60); line-height: 1.75; }
+
+    /* ── COMPARE ────────────────────────────────────── */
+    .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .cc { border-radius: var(--r-lg); overflow: hidden; border: 1px solid var(--border); }
+    .cc__head { padding: 22px 28px; display: flex; align-items: center; gap: 12px; }
+    .cc--us   .cc__head { background: var(--dark); color: #fff; }
+    .cc--them .cc__head { background: var(--pink-bg); color: var(--dark-60); }
+    .cc__head h3 { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 16px; }
+    .cc__badge {
       margin-left: auto; font-size: 10px; font-weight: 700;
-      letter-spacing:.07em; padding: 4px 12px; border-radius:999px;
+      letter-spacing:.08em; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 999px;
     }
-    .compare-card--us   .compare-badge { background: var(--green-200); color: var(--green-900); }
-    .compare-card--them .compare-badge { background: #e5e7eb; color: var(--ink-60); }
-    .compare-list { background: var(--white); padding: 6px 0; }
-    .compare-list li {
+    .cc--us   .cc__badge { background: var(--pink-vivid); color: #fff; }
+    .cc--them .cc__badge { background: #e5e7eb; color: #6b7280; }
+    .cc__list { background: var(--white); padding: 6px 0; }
+    .cc__list li {
       display: flex; align-items: flex-start; gap: 14px;
-      padding: 13px 24px;
-      border-bottom: 1px solid var(--green-50);
-      font-size: 14px; color: var(--ink);
-      line-height: 1.5;
+      padding: 13px 28px;
+      border-bottom: 1px solid var(--pink-bg);
+      font-size: 14px; color: var(--dark); line-height: 1.5;
     }
-    .compare-list li:last-child { border-bottom: none; }
-    .ci-y { color: #16a34a; font-weight: 700; flex-shrink: 0; }
-    .ci-n { color: #dc2626; font-weight: 700; flex-shrink: 0; }
+    .cc__list li:last-child { border-bottom: none; }
+    .cy { color: #16a34a; font-weight: 700; flex-shrink: 0; }
+    .cn { color: #dc2626; font-weight: 700; flex-shrink: 0; }
 
-    /* ─────────────────────────────────────────────
-       TESTIMONIALS
-    ───────────────────────────────────────────── */
-    .testimonials-grid {
-      display: grid; grid-template-columns: repeat(3,1fr); gap: 24px;
-    }
+    /* ── TESTIMONIALS ───────────────────────────────── */
+    .testi { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
     .tc {
       background: var(--white);
-      border-radius: var(--radius-md);
-      padding: 30px; border: 1px solid var(--green-100);
+      border-radius: var(--r-lg);
+      padding: 36px 32px;
+      border: 1px solid var(--border);
     }
-    .tc__stars { color: #f59e0b; font-size: 14px; letter-spacing: 3px; margin-bottom: 16px; }
-    .tc__text  { font-size: 14px; line-height: 1.85; color: var(--ink); margin-bottom: 24px; }
+    .tc__stars { color: var(--pink-vivid); font-size: 14px; letter-spacing: 3px; margin-bottom: 18px; }
+    .tc__text  {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 16px; line-height: 1.8; color: var(--dark); margin-bottom: 28px;
+    }
     .tc__author { display: flex; align-items: center; gap: 14px; }
     .tc__av {
-      width: 44px; height: 44px; border-radius: 50%;
-      background: var(--green-50);
+      width: 48px; height: 48px; border-radius: 50%;
+      background: var(--pink-mid);
       display: flex; align-items: center; justify-content: center;
-      font-size: 20px; flex-shrink: 0;
+      font-size: 22px; flex-shrink: 0;
     }
-    .tc__name { font-weight: 600; font-size: 14px; }
-    .tc__sub  { font-size: 12px; color: var(--ink-60); margin-top: 2px; }
+    .tc__name { font-weight: 600; font-size: 14px; color: var(--dark); }
+    .tc__sub  { font-size: 12px; color: var(--dark-60); margin-top: 2px; }
 
-    /* ─────────────────────────────────────────────
-       NEWSLETTER
-    ───────────────────────────────────────────── */
-    .nl-box {
-      background: var(--green-800);
-      border-radius: var(--radius-xl);
-      padding: 72px 56px;
+    /* ── NEWSLETTER ─────────────────────────────────── */
+    .nl {
+      background: var(--pink-mid);
+      border-radius: var(--r-xl);
+      padding: 80px 56px;
       text-align: center;
-      color: #fff;
     }
-    .nl-box h2 { color: #fff; margin: 14px 0 14px; }
-    .nl-box p  { color: rgba(255,255,255,.65); font-size: 16px; max-width: 480px; margin: 0 auto 36px; line-height: 1.75; }
+    .nl h2 { color: var(--dark); margin: 14px 0 16px; }
+    .nl p  { color: var(--dark-60); max-width: 460px; margin: 0 auto 40px; font-size: 15px; line-height: 1.8; }
     .nl-form { display: flex; max-width: 480px; margin: 0 auto; }
     .nl-input {
-      flex: 1;
-      border: none; outline: none;
+      flex: 1; border: none; outline: none;
       border-radius: 999px 0 0 999px;
       padding: 15px 24px;
       font: inherit; font-size: 14px;
-      background: rgba(255,255,255,.12);
-      color: #fff;
+      background: rgba(255,255,255,.65);
+      color: var(--dark);
     }
-    .nl-input::placeholder { color: rgba(255,255,255,.45); }
-    .nl-input:focus { background: rgba(255,255,255,.18); }
+    .nl-input::placeholder { color: var(--dark-60); }
+    .nl-input:focus { background: rgba(255,255,255,.9); }
     .nl-btn {
-      background: var(--green-200); color: var(--green-900);
+      background: var(--dark); color: #fff;
       border-radius: 0 999px 999px 0;
       padding: 15px 28px;
-      font-size: 14px; font-weight: 700;
-      font-family: inherit;
-      transition: background .18s;
-      flex-shrink: 0;
+      font-size: 12px; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase; font-family: inherit;
+      transition: background .2s; flex-shrink: 0;
     }
-    .nl-btn:hover { background: #fff; }
-    .nl-ok { color: var(--green-200); font-weight: 600; margin-top: 18px; font-size: 15px; }
+    .nl-btn:hover { background: var(--pink-vivid); }
+    .nl-ok { color: var(--dark); font-weight: 600; margin-top: 20px; font-size: 15px; }
 
-    /* ─────────────────────────────────────────────
-       FOOTER
-    ───────────────────────────────────────────── */
+    /* ── FOOTER ─────────────────────────────────────── */
     .footer {
-      background: var(--green-900);
-      color: rgba(255,255,255,.55);
-      padding: 72px 0 36px;
+      background: var(--dark); color: rgba(255,255,255,.5);
+      padding: 80px 0 40px;
     }
     .footer__grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 48px;
-      padding-bottom: 56px;
-      border-bottom: 1px solid rgba(255,255,255,.07);
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px;
+      padding-bottom: 60px; border-bottom: 1px solid rgba(255,255,255,.07);
     }
-    .footer__brand .nav__logo { color: #fff; font-size: 20px; margin-bottom: 18px; }
+    .footer__logo { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+    .footer__logo img { height: 40px; }
+    .footer__logo span {
+      font-family: 'Playfair Display', serif; font-style: italic;
+      font-size: 20px; color: var(--pink-deep);
+    }
     .footer__brand p { font-size: 13px; line-height: 1.85; max-width: 268px; margin-bottom: 28px; }
-    .footer-socials { display: flex; gap: 10px; }
+    .footer__socials { display: flex; gap: 10px; }
     .fsb {
       width: 38px; height: 38px; border-radius: 50%;
       background: rgba(255,255,255,.07);
       display: flex; align-items: center; justify-content: center;
-      font-size: 15px; cursor: pointer;
-      transition: background .18s;
+      font-size: 15px; cursor: pointer; transition: background .2s;
     }
-    .fsb:hover { background: var(--green-600); }
+    .fsb:hover { background: var(--pink-vivid); }
     .footer__col h5 {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 11px; font-weight: 700; letter-spacing: .1em;
-      text-transform: uppercase; color: #fff;
-      margin-bottom: 20px;
+      font-family: 'Inter', sans-serif;
+      font-size: 10px; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: #fff; margin-bottom: 20px;
     }
     .footer__col li { margin-bottom: 11px; }
-    .footer__col a  { font-size: 13px; color: rgba(255,255,255,.5); transition: color .18s; }
-    .footer__col a:hover { color: var(--green-200); }
+    .footer__col a  { font-size: 13px; color: rgba(255,255,255,.45); transition: color .18s; }
+    .footer__col a:hover { color: var(--pink-deep); }
     .footer__bottom {
-      padding-top: 28px;
+      padding-top: 32px;
       display: flex; align-items: center;
       justify-content: space-between; flex-wrap: wrap; gap: 14px;
     }
     .footer__bottom p { font-size: 12px; }
-    .payment-badges { display: flex; gap: 8px; flex-wrap: wrap; }
-    .pay-badge {
-      background: rgba(255,255,255,.08);
-      color: rgba(255,255,255,.5);
+    .pays { display: flex; gap: 8px; flex-wrap: wrap; }
+    .pay {
+      background: rgba(255,255,255,.07);
+      color: rgba(255,255,255,.4);
       font-size: 11px; font-weight: 600;
       padding: 4px 10px; border-radius: 6px;
     }
 
-    /* ─────────────────────────────────────────────
-       MOBILE DRAWER
-    ───────────────────────────────────────────── */
+    /* ── Mobile drawer ───────────────────────────────── */
     .drawer {
-      display: none;
-      position: fixed; inset: 0;
-      background: var(--cream);
-      z-index: 200;
-      flex-direction: column;
-      padding: 88px 32px 40px;
-      gap: 4px;
+      display: none; position: fixed; inset: 0;
+      background: var(--pink-bg); z-index: 200;
+      flex-direction: column; padding: 96px 32px 40px; gap: 4px;
     }
     .drawer.open { display: flex; }
     .drawer a {
-      font-family: 'DM Serif Display', serif;
-      font-size: 32px; color: var(--green-800);
-      padding: 14px 0;
-      border-bottom: 1px solid var(--green-100);
+      font-family: 'Playfair Display', serif; font-style: italic;
+      font-size: 34px; color: var(--dark);
+      padding: 14px 0; border-bottom: 1px solid var(--border);
     }
     .drawer__close {
-      position: absolute; top: 18px; right: 22px;
-      font-size: 28px; color: var(--green-800);
-      cursor: pointer;
+      position: absolute; top: 20px; right: 24px;
+      font-size: 28px; color: var(--dark); cursor: pointer;
     }
 
-    /* ─────────────────────────────────────────────
-       Utility
-    ───────────────────────────────────────────── */
-    .hidden { display: none !important; }
-
-    /* ─────────────────────────────────────────────
-       RESPONSIVE
-    ───────────────────────────────────────────── */
-    @media (max-width: 1100px) {
-      .products-grid { grid-template-columns: repeat(2,1fr); }
-      .ingredients-grid { grid-template-columns: repeat(3,1fr); }
+    /* ── Responsive ──────────────────────────────────── */
+    @media (max-width: 1060px) {
+      .products { grid-template-columns: repeat(2,1fr); }
+      .ing-grid  { grid-template-columns: repeat(3,1fr); }
       .footer__grid { grid-template-columns: 1fr 1fr; }
     }
-    @media (max-width: 900px) {
+    @media (max-width: 880px) {
       .nav__links { display: none; }
-      .nav__menu-btn { display: flex; }
-      .hero__inner { grid-template-columns: 1fr; }
-      .hero__text { padding-bottom: 0; text-align: center; }
-      .hero__sub { max-width: 100%; }
-      .hero__actions { justify-content: center; }
-      .hero__trust { justify-content: center; flex-wrap: wrap; }
-      .hero__visual { padding: 40px 0 0; }
-      .hero-cookie { width: 130px; }
-      .benefits-grid { grid-template-columns: 1fr 1fr; }
-      .bundle-panel { grid-template-columns: 1fr; }
-      .bundle-panel__visual { padding: 0 48px 48px; }
-      .process-grid { grid-template-columns: 1fr 1fr; gap: 2px; }
-      .process-step { border-radius: 0 !important; }
-      .compare-wrap { grid-template-columns: 1fr; }
-      .testimonials-grid { grid-template-columns: 1fr; }
+      .nav__menu  { display: flex; }
+      .features { grid-template-columns: 1fr; }
+      .feat:first-child, .feat:last-child { border-radius: 0; }
+      .feat:first-child { border-radius: var(--r-lg) var(--r-lg) 0 0; }
+      .feat:last-child  { border-radius: 0 0 var(--r-lg) var(--r-lg); }
+      .bundle { grid-template-columns: 1fr; }
+      .bundle__visual { padding: 0 56px 56px; }
+      .process { grid-template-columns: 1fr 1fr; }
+      .compare { grid-template-columns: 1fr; }
+      .testi { grid-template-columns: 1fr; }
+      .hero-pip--3 { display: none; }
     }
     @media (max-width: 640px) {
-      .section { padding: 60px 0; }
-      .products-grid { grid-template-columns: 1fr; }
-      .benefits-grid { grid-template-columns: 1fr; }
-      .ingredients-grid { grid-template-columns: repeat(2,1fr); }
-      .process-grid { grid-template-columns: 1fr; }
+      .section { padding: 64px 0; }
+      .products { grid-template-columns: 1fr; }
+      .ing-grid { grid-template-columns: repeat(2,1fr); }
+      .process  { grid-template-columns: 1fr; }
       .footer__grid { grid-template-columns: 1fr; }
-      .hero__visual { gap: 10px; }
-      .hero-cookie { width: 110px; }
-      .nl-box { padding: 48px 24px; border-radius: var(--radius-md); }
+      .nl { padding: 52px 24px; border-radius: var(--r-lg); }
       .nl-form { flex-direction: column; gap: 10px; }
-      .nl-input  { border-radius: 999px; }
-      .nl-btn { border-radius: 999px; }
-      .bundle-panel { border-radius: var(--radius-md); }
-      .bundle-panel__text { padding: 40px 28px; }
+      .nl-input { border-radius: 999px; }
+      .nl-btn   { border-radius: 999px; }
+      .bundle { border-radius: var(--r-lg); }
+      .bundle__copy { padding: 48px 32px; }
+      .hero-pip--1, .hero-pip--2, .hero-pip--3 { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ──────────────── NAV ──────────────────────── -->
+  <!-- ── NAV ───────────────────────────── -->
   <header class="nav-wrap">
     <div class="wrap">
       <nav class="nav">
         <a href="#" class="nav__logo">
-          NOURRI <span class="nav__logo-dot"></span>
+          <img src="nourri_logo.jpg" alt="nourri logo" />
         </a>
 
         <div class="nav__links">
-          <a href="#products">Treats</a>
+          <a href="#products">Shop</a>
           <a href="#bundle">Bundle</a>
           <a href="#process">How It's Made</a>
-          <a href="#compare">Why NOURRI</a>
+          <a href="#about">About</a>
           <a href="#contact">Contact</a>
         </div>
 
         <div class="nav__right">
-          <button class="nav__cart" id="cartBtn">
-            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <button class="nav__cart-btn" id="cartBtn">
+            <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
               <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
               <line x1="3" y1="6" x2="21" y2="6"/>
               <path d="M16 10a4 4 0 0 1-8 0"/>
@@ -702,12 +622,10 @@
             Cart
             <span class="nav__cart-count" id="cartCount">0</span>
           </button>
-          <button class="nav__menu-btn" aria-label="Menu"
+          <button class="nav__menu" aria-label="Menu"
             onclick="document.querySelector('.drawer').classList.add('open')">
-            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <line x1="3" y1="7" x2="21" y2="7"/>
-              <line x1="3" y1="12" x2="21" y2="12"/>
-              <line x1="3" y1="17" x2="21" y2="17"/>
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/>
             </svg>
           </button>
         </div>
@@ -715,212 +633,224 @@
     </div>
   </header>
 
-  <!-- Mobile drawer -->
+  <!-- Mobile Drawer -->
   <div class="drawer" role="dialog" aria-modal="true">
     <button class="drawer__close" onclick="document.querySelector('.drawer').classList.remove('open')">✕</button>
     <a href="#" onclick="this.closest('.drawer').classList.remove('open')">Home</a>
-    <a href="#products" onclick="this.closest('.drawer').classList.remove('open')">Treats</a>
+    <a href="#products" onclick="this.closest('.drawer').classList.remove('open')">Shop</a>
     <a href="#bundle" onclick="this.closest('.drawer').classList.remove('open')">Bundle</a>
     <a href="#process" onclick="this.closest('.drawer').classList.remove('open')">How It's Made</a>
-    <a href="#compare" onclick="this.closest('.drawer').classList.remove('open')">Why NOURRI</a>
+    <a href="#about" onclick="this.closest('.drawer').classList.remove('open')">About</a>
     <a href="#contact" onclick="this.closest('.drawer').classList.remove('open')">Contact</a>
   </div>
 
-  <!-- ──────────────── HERO ─────────────────────── -->
+  <!-- ── HERO ──────────────────────────── -->
   <section class="hero">
-    <div class="wrap">
-      <div class="hero__inner">
+    <div class="hero__bg"></div>
+    <div class="hero__orb hero__orb--1"></div>
+    <div class="hero__orb hero__orb--2"></div>
+    <div class="hero__orb hero__orb--3"></div>
 
-        <div class="hero__text">
-          <div class="hero__eyebrow">
-            <span class="label label-green">Functional Wellness Treats</span>
-          </div>
-          <h1>Every treat should <em>do</em> something.</h1>
-          <p class="hero__sub">
-            Four targeted varieties made with real fresh ingredients, crafted for specific
-            health needs — joint support, calm behaviour, and digestive wellness.
-            Made fresh in Singapore.
-          </p>
-          <div class="hero__actions">
-            <a href="#products" class="btn btn-dark">Shop Treats</a>
-            <a href="#bundle" class="btn btn-outline">Wellness Bundle — S$65</a>
-          </div>
-          <div class="hero__trust">
-            <div class="hero__trust-item">Grain-free formula</div>
-            <div class="hero__trust-item">Real fresh ingredients</div>
-            <div class="hero__trust-item">SFA food-safe process</div>
-          </div>
+    <!-- Floating product pips -->
+    <div class="hero__products">
+      <div class="hero-pip hero-pip--1">
+        <div class="hero-pip__icon">🌼</div>
+        <div class="hero-pip__text">
+          <div class="hero-pip__name">Joint Support</div>
+          <div class="hero-pip__price">S$21 / 50g</div>
         </div>
-
-        <div class="hero__visual">
-          <div class="hero-cookie hero-cookie--j">
-            <div class="hero-cookie__icon">🌼</div>
-            <div class="hero-cookie__name">Joint Support</div>
-            <div class="hero-cookie__price">S$21</div>
-          </div>
-          <div class="hero-cookie hero-cookie--c">
-            <div class="hero-cookie__icon">🫐</div>
-            <div class="hero-cookie__name">Calm &amp; Anxiety</div>
-            <div class="hero-cookie__price">S$23</div>
-          </div>
-          <div class="hero-cookie hero-cookie--d">
-            <div class="hero-cookie__icon">🌿</div>
-            <div class="hero-cookie__name">Digestive Wellness</div>
-            <div class="hero-cookie__price">S$21</div>
-          </div>
-        </div>
-
       </div>
+      <div class="hero-pip hero-pip--2">
+        <div class="hero-pip__icon">🫐</div>
+        <div class="hero-pip__text">
+          <div class="hero-pip__name">Calm &amp; Anxiety</div>
+          <div class="hero-pip__price">S$23 / 50g</div>
+        </div>
+      </div>
+      <div class="hero-pip hero-pip--3">
+        <div class="hero-pip__icon">🌿</div>
+        <div class="hero-pip__text">
+          <div class="hero-pip__name">Digestive Wellness</div>
+          <div class="hero-pip__price">S$21 / 50g</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__content">
+      <div class="wrap">
+        <h1>Functional Wellness<br><em>for Your Pets.</em></h1>
+        <p class="hero__sub">Real ingredients · Science-backed · Made fresh in Singapore</p>
+        <div class="hero__ctas">
+          <a href="#products" class="btn btn-pink">Shop Treats</a>
+          <a href="#bundle" class="btn btn-outline" style="border-color:rgba(255,255,255,.3);color:#fff;">Wellness Bundle — S$65</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__scroll">
+      <span>Scroll</span>
+      <div class="hero__scroll-line"></div>
     </div>
   </section>
 
-  <!-- ──────────────── TICKER ───────────────────── -->
-  <div class="ticker" aria-hidden="true">
-    <div class="ticker__track" id="tickerTrack">
-      <span class="ticker__item">🌿 Real fresh ingredients</span>
-      <span class="ticker__dot"></span>
-      <span class="ticker__item">🔬 Science-backed benefits</span>
-      <span class="ticker__dot"></span>
-      <span class="ticker__item">🇸🇬 Made fresh in Singapore</span>
-      <span class="ticker__dot"></span>
-      <span class="ticker__item">🌾 Grain-free formula</span>
-      <span class="ticker__dot"></span>
-      <span class="ticker__item">⏱️ 5–15 min long-lasting chew</span>
-      <span class="ticker__dot"></span>
-      <span class="ticker__item">🎁 Free delivery above S$60</span>
-      <span class="ticker__dot"></span>
-      <!-- duplicate for seamless loop -->
-      <span class="ticker__item">🌿 Real fresh ingredients</span>
-      <span class="ticker__dot"></span>
-      <span class="ticker__item">🔬 Science-backed benefits</span>
-      <span class="ticker__dot"></span>
-      <span class="ticker__item">🇸🇬 Made fresh in Singapore</span>
-      <span class="ticker__dot"></span>
-      <span class="ticker__item">🌾 Grain-free formula</span>
-      <span class="ticker__dot"></span>
-      <span class="ticker__item">⏱️ 5–15 min long-lasting chew</span>
-      <span class="ticker__dot"></span>
-      <span class="ticker__item">🎁 Free delivery above S$60</span>
-      <span class="ticker__dot"></span>
+  <!-- ── MARQUEE ───────────────────────── -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span class="marquee__item">🌿 Real Fresh Ingredients</span>
+      <span class="marquee__sep">·</span>
+      <span class="marquee__item">🔬 Science-Backed Benefits</span>
+      <span class="marquee__sep">·</span>
+      <span class="marquee__item">🇸🇬 Made in Singapore</span>
+      <span class="marquee__sep">·</span>
+      <span class="marquee__item">🌾 Grain-Free Formula</span>
+      <span class="marquee__sep">·</span>
+      <span class="marquee__item">⏱ 5–15 Min Long-Lasting Chew</span>
+      <span class="marquee__sep">·</span>
+      <span class="marquee__item">🎁 Free Delivery over S$60</span>
+      <span class="marquee__sep">·</span>
+      <!-- duplicate -->
+      <span class="marquee__item">🌿 Real Fresh Ingredients</span>
+      <span class="marquee__sep">·</span>
+      <span class="marquee__item">🔬 Science-Backed Benefits</span>
+      <span class="marquee__sep">·</span>
+      <span class="marquee__item">🇸🇬 Made in Singapore</span>
+      <span class="marquee__sep">·</span>
+      <span class="marquee__item">🌾 Grain-Free Formula</span>
+      <span class="marquee__sep">·</span>
+      <span class="marquee__item">⏱ 5–15 Min Long-Lasting Chew</span>
+      <span class="marquee__sep">·</span>
+      <span class="marquee__item">🎁 Free Delivery over S$60</span>
+      <span class="marquee__sep">·</span>
     </div>
   </div>
 
-  <!-- ──────────────── PRODUCTS ─────────────────── -->
-  <section class="section" id="products">
+  <!-- ── STATEMENT ─────────────────────── -->
+  <div class="statement section" id="about">
     <div class="wrap">
-      <div class="sh">
-        <span class="label label-green">Our Treats</span>
-        <h2>Four varieties. One mission.</h2>
-        <p>Each cookie is handcrafted from fresh whole ingredients, dehydrated slowly at low temperature, and post-baked to SFA food-safety standards.</p>
+      <span class="lbl lbl-pink">Our Philosophy</span>
+      <h2>"Every treat should do something<br><em>meaningful for your dog.</em>"</h2>
+      <p>NOURRI makes functional wellness cookies for dogs — crafted from real fresh ingredients, each variety targeting a specific health need. No vague claims. No mystery powders. Just honest food with measurable results.</p>
+      <a href="#products" class="btn btn-dark">Discover Our Treats</a>
+    </div>
+  </div>
+
+  <!-- ── PRODUCTS ──────────────────────── -->
+  <section class="section section--white" id="products">
+    <div class="wrap">
+      <div class="sh sh--c">
+        <span class="lbl lbl-pink">Our Treats</span>
+        <h2>Three varieties.<br><em>One mission.</em></h2>
+        <p>Handcrafted with fresh whole ingredients. Dehydrated slowly at low temperature. Post-baked to SFA food-safety standards.</p>
       </div>
 
-      <div class="products-grid">
+      <div class="products">
 
-        <!-- Joint Support -->
-        <div class="product-card">
-          <div class="product-card__plate product-card__plate--j">
-            <span class="product-card__tag tag-j">🟠 Joint Support</span>
-            <div class="product-card__emoji">🌼</div>
+        <div class="pc">
+          <div class="pc__plate pc__plate--j">
+            <span class="pc__tag ptag-j">🟠 Joint Support</span>
+            <div class="pc__emoji">🌼</div>
           </div>
-          <div class="product-card__body">
-            <div class="product-card__name">Joint Support Cookies</div>
-            <div class="product-card__desc">For senior dogs, large breeds and active pups. Supports mobility and reduces inflammation naturally with targeted botanicals.</div>
-            <div class="product-card__pills">
+          <div class="pc__body">
+            <div class="pc__name">Joint Support Cookies</div>
+            <div class="pc__desc">For senior dogs, large breeds and active pups. Supports mobility and eases inflammation with targeted botanicals and collagen-rich gelatin.</div>
+            <div class="pc__pills">
               <span class="pill">Turmeric</span>
               <span class="pill">Ginger</span>
               <span class="pill">Gelatin</span>
               <span class="pill">Chicken</span>
               <span class="pill">Calendula</span>
             </div>
-            <div class="product-card__foot">
-              <div class="product-card__price">S$21 <small>/ 50g</small></div>
-              <button class="add-btn" style="background:#d97706;" onclick="addToCart(this,'Joint Support')">
+            <div class="pc__foot">
+              <div class="pc__price">S$21 <small>/ 50g</small></div>
+              <button class="add-btn" onclick="addToCart(this,'Joint Support')">
                 <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                Add
+                Add to Cart
               </button>
             </div>
           </div>
         </div>
 
-        <!-- Calm & Anxiety -->
-        <div class="product-card">
-          <div class="product-card__plate product-card__plate--c">
-            <span class="product-card__tag tag-c">💜 Calm &amp; Anxiety</span>
-            <div class="product-card__emoji">🫐</div>
+        <div class="pc">
+          <div class="pc__plate pc__plate--c">
+            <span class="pc__tag ptag-c">💜 Calm &amp; Anxiety</span>
+            <div class="pc__emoji">🫐</div>
           </div>
-          <div class="product-card__body">
-            <div class="product-card__name">Calm &amp; Anxiety Cookies</div>
-            <div class="product-card__desc">For anxious dogs, separation anxiety and storm phobia. Gentle calming blend using natural botanicals and adaptogens.</div>
-            <div class="product-card__pills">
+          <div class="pc__body">
+            <div class="pc__name">Calm &amp; Anxiety Cookies</div>
+            <div class="pc__desc">For anxious dogs, separation anxiety and storm phobia. A gentle calming blend of natural botanicals and adaptogens that actually work.</div>
+            <div class="pc__pills">
               <span class="pill">Purple Sweet Potato</span>
               <span class="pill">Blueberries</span>
               <span class="pill">Chamomile</span>
               <span class="pill">Chicken</span>
             </div>
-            <div class="product-card__foot">
-              <div class="product-card__price">S$23 <small>/ 50g</small></div>
-              <button class="add-btn" style="background:#7c3aed;" onclick="addToCart(this,'Calm & Anxiety')">
+            <div class="pc__foot">
+              <div class="pc__price">S$23 <small>/ 50g</small></div>
+              <button class="add-btn" onclick="addToCart(this,'Calm & Anxiety')">
                 <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                Add
+                Add to Cart
               </button>
             </div>
           </div>
         </div>
 
-        <!-- Digestive Wellness -->
-        <div class="product-card">
-          <div class="product-card__plate product-card__plate--d">
-            <span class="product-card__tag tag-d">💚 Digestive Wellness</span>
-            <div class="product-card__emoji">🌿</div>
+        <div class="pc">
+          <div class="pc__plate pc__plate--d">
+            <span class="pc__tag ptag-d">💚 Digestive Wellness</span>
+            <div class="pc__emoji">🌿</div>
           </div>
-          <div class="product-card__body">
-            <div class="product-card__name">Digestive Wellness Cookies</div>
-            <div class="product-card__desc">For sensitive stomachs and digestive issues. Prebiotic-rich, high-fibre blend that's gentle on the gut.</div>
-            <div class="product-card__pills">
+          <div class="pc__body">
+            <div class="pc__name">Digestive Wellness Cookies</div>
+            <div class="pc__desc">For sensitive stomachs and digestive issues. A prebiotic-rich, high-fibre blend that's gentle on the gut and easy on the wallet.</div>
+            <div class="pc__pills">
               <span class="pill">Spinach</span>
               <span class="pill">Pumpkin</span>
               <span class="pill">Fennel</span>
               <span class="pill">Parsley</span>
               <span class="pill">Ginger</span>
             </div>
-            <div class="product-card__foot">
-              <div class="product-card__price">S$21 <small>/ 50g</small></div>
-              <button class="add-btn" style="background:#16a34a;" onclick="addToCart(this,'Digestive Wellness')">
+            <div class="pc__foot">
+              <div class="pc__price">S$21 <small>/ 50g</small></div>
+              <button class="add-btn" onclick="addToCart(this,'Digestive Wellness')">
                 <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                Add
+                Add to Cart
               </button>
             </div>
           </div>
         </div>
 
-
       </div>
     </div>
   </section>
 
-  <!-- ──────────────── BUNDLE ───────────────────── -->
+  <!-- ── BUNDLE ────────────────────────── -->
   <section class="section" id="bundle">
     <div class="wrap">
-      <div class="bundle-panel">
-
-        <div class="bundle-panel__text">
-          <span class="label label-white">Best Value</span>
+      <div class="bundle">
+        <div class="bundle__copy">
+          <span class="lbl lbl-ghost">Best Value</span>
           <h2>Wellness Discovery Bundle</h2>
-          <p>Try all four functional varieties and find the perfect fit for your dog's unique needs. The ideal starter pack — or the perfect gift.</p>
-
-          <div class="bundle-includes">
-            <div class="bundle-row bundle-row--j">Joint Support Cookies (50g) — Golden Turmeric</div>
-            <div class="bundle-row bundle-row--c">Calm &amp; Anxiety Cookies (50g) — Purple Berry</div>
-            <div class="bundle-row bundle-row--d">Digestive Wellness Cookies (50g) — Garden Green</div>
+          <p>Try all three functional varieties and find the perfect fit for your dog's unique needs. The ideal starter pack — or the perfect gift for any fur parent.</p>
+          <div class="bundle__list">
+            <div class="bundle__row">
+              <span class="bundle__dot" style="background:#ffe082;"></span>
+              Joint Support Cookies (50g) — Golden Turmeric
+            </div>
+            <div class="bundle__row">
+              <span class="bundle__dot" style="background:#ce93d8;"></span>
+              Calm &amp; Anxiety Cookies (50g) — Purple Berry
+            </div>
+            <div class="bundle__row">
+              <span class="bundle__dot" style="background:#a5d6a7;"></span>
+              Digestive Wellness Cookies (50g) — Garden Green
+            </div>
           </div>
-
-          <div class="bundle-price-row">
-            <span class="bundle-price">S$65</span>
-            <span class="bundle-was">S$88</span>
-            <span class="bundle-save">Save S$23</span>
+          <div class="bundle__pricing">
+            <span class="bundle__now">S$65</span>
+            <span class="bundle__was">S$88</span>
+            <span class="bundle__save">Save S$23</span>
           </div>
-
-          <button class="btn btn-white" onclick="addBundle(event)">
+          <button class="btn btn-pink" onclick="addBundle(event)">
             <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
               <line x1="3" y1="6" x2="21" y2="6"/>
@@ -929,181 +859,165 @@
             Add Bundle to Cart
           </button>
         </div>
-
-        <div class="bundle-panel__visual">
-          <div class="bundle-cookies">
-            <div class="bcookie bcookie--j"><div class="bcookie__icon">🌼</div><div class="bcookie__lbl">Joint<br>Support</div></div>
-            <div class="bcookie bcookie--c"><div class="bcookie__icon">🫐</div><div class="bcookie__lbl">Calm &amp;<br>Anxiety</div></div>
-            <div class="bcookie bcookie--d"><div class="bcookie__icon">🌿</div><div class="bcookie__lbl">Digestive<br>Wellness</div></div>
+        <div class="bundle__visual">
+          <div class="bundle__grid">
+            <div class="bcard bcard--j"><div class="bcard__icon">🌼</div><div class="bcard__lbl">Joint<br>Support</div></div>
+            <div class="bcard bcard--c"><div class="bcard__icon">🫐</div><div class="bcard__lbl">Calm &amp;<br>Anxiety</div></div>
+            <div class="bcard bcard--d"><div class="bcard__icon">🌿</div><div class="bcard__lbl">Digestive<br>Wellness</div></div>
+            <div class="bcard" style="background:rgba(240,98,146,.08);border-color:rgba(240,98,146,.15);">
+              <div style="font-size:36px;">🎁</div>
+              <div class="bcard__lbl">Free<br>Delivery</div>
+            </div>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ──────────────── BENEFITS ─────────────────── -->
-  <section class="section" style="background: var(--green-50);" id="compare">
+  <!-- ── FEATURES 3-UP ──────────────────── -->
+  <section class="section section--blush">
     <div class="wrap">
-      <div class="sh sh--center">
-        <span class="label label-green">Why NOURRI</span>
-        <h2>Nourishment Simplified.</h2>
-        <p>We believe every dog deserves functional food that looks as good as it works.</p>
+      <div class="sh sh--c">
+        <span class="lbl lbl-pink">Why NOURRI</span>
+        <h2>Nourishment<br><em>Simplified.</em></h2>
       </div>
-      <div class="benefits-grid">
-        <div class="benefit-card">
-          <div class="benefit-card__icon">🌿</div>
-          <h3>Real Fresh Ingredients</h3>
-          <p>Fresh spinach, wild salmon, blueberries and turmeric — not powders. What's on the label is exactly what goes in, sourced from the same places you shop for your family.</p>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-card__icon">🔬</div>
-          <h3>Targeted Health Benefits</h3>
-          <p>Each variety is formulated for a specific need — joint mobility, calm behaviour or digestive health. No vague "healthy" claims. Real, measurable results.</p>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-card__icon">⏱️</div>
+      <div class="features">
+        <div class="feat">
+          <div class="feat__icon">⏱️</div>
           <h3>5–15 Minute Chew</h3>
-          <p>Our dehydrated texture is 40× longer-lasting than freeze-dried treats that dissolve in seconds. More chew time means more enrichment, more dental benefit, more value.</p>
+          <p>Our dehydrated texture is 40× longer-lasting than freeze-dried treats that dissolve in seconds. More chew time means more enrichment, dental benefits, and genuine value.</p>
         </div>
-        <div class="benefit-card">
-          <div class="benefit-card__icon">🎨</div>
-          <h3>Naturally Beautiful</h3>
-          <p>Four vivid natural colours — golden turmeric, purple berry, garden green, coral salmon — with real botanical flowers and herbs pressed into every cookie.</p>
+        <div class="feat">
+          <div class="feat__icon">🔬</div>
+          <h3>Targeted Benefits</h3>
+          <p>Every variety is formulated for a specific health need — joint mobility, calm behaviour, or digestive wellness. No vague claims. No guesswork. Real, measurable results.</p>
         </div>
-        <div class="benefit-card">
-          <div class="benefit-card__icon">🇸🇬</div>
-          <h3>Made Fresh in Singapore</h3>
-          <p>Small-batch, handcrafted production means every bag reaches you within days of being made. No long supply chains, no warehouse shelf time.</p>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-card__icon">💰</div>
-          <h3>Accessible Premium Price</h3>
-          <p>S$20–26 per 50g compared to S$28–40 for freeze-dried brands. Premium quality and science-backed benefits shouldn't be reserved for 20% of pet owners.</p>
+        <div class="feat">
+          <div class="feat__icon">💰</div>
+          <h3>Accessible Premium</h3>
+          <p>S$20–23 per 50g vs S$28–40 for freeze-dried luxury brands. Premium quality and science-backed benefits shouldn't be reserved for the top 20% of pet owners.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ──────────────── HOW IT'S MADE ───────────────── -->
-  <section class="section" id="process">
+  <!-- ── PROCESS ───────────────────────── -->
+  <section class="section section--white" id="process">
     <div class="wrap">
-      <div class="sh sh--center">
-        <span class="label label-green">Our Process</span>
-        <h2>From kitchen to your dog's bowl.</h2>
-        <p>Every batch follows a strict 4-step process — fresh sourcing to SFA-compliant post-heat treatment. No shortcuts, ever.</p>
+      <div class="sh sh--c">
+        <span class="lbl lbl-pink">How It's Made</span>
+        <h2>From kitchen<br><em>to your dog's bowl.</em></h2>
+        <p>Every batch follows a strict 4-step process. No shortcuts, ever.</p>
       </div>
-      <div class="process-grid">
-        <div class="process-step">
-          <div class="process-step__num">01</div>
+      <div class="process">
+        <div class="pstep">
+          <div class="pstep__icon-wrap">🛒</div>
+          <div class="pstep__num">Step 01</div>
           <h4>Source Fresh Daily</h4>
-          <p>Chicken, salmon and fresh produce sourced from Singapore's wet markets — the same places you shop for your own family.</p>
+          <p>Chicken and fresh produce sourced from Singapore's wet markets — the same places you shop for your own family.</p>
         </div>
-        <div class="process-step">
-          <div class="process-step__num">02</div>
+        <div class="pstep">
+          <div class="pstep__icon-wrap">🫙</div>
+          <div class="pstep__num">Step 02</div>
           <h4>Mix &amp; Mould</h4>
-          <p>Fresh ingredients blended into a nutritious paste, pressed into hemisphere moulds with real botanical decorations on top.</p>
+          <p>Blended into a nutritious paste, pressed into hemisphere moulds with real botanical decorations pressed on top.</p>
         </div>
-        <div class="process-step">
-          <div class="process-step__num">03</div>
+        <div class="pstep">
+          <div class="pstep__icon-wrap">🌡️</div>
+          <div class="pstep__num">Step 03</div>
           <h4>Low-Temp Dehydrate</h4>
-          <p>10–14 hours at 63–65°C preserves nutrients and natural colours while building a long-lasting, satisfying chew texture.</p>
+          <p>10–14 hours at 63–65°C preserves nutrients and natural colours while building a long-lasting chew texture.</p>
         </div>
-        <div class="process-step">
-          <div class="process-step__num">04</div>
+        <div class="pstep">
+          <div class="pstep__icon-wrap">✅</div>
+          <div class="pstep__num">Step 04</div>
           <h4>SFA Post-Heat</h4>
-          <p>135°C oven for 10 minutes eliminates all pathogens — Salmonella, E. coli, Listeria. Mandatory. Non-negotiable. Always.</p>
+          <p>135°C for 10 minutes eliminates all pathogens — Salmonella, E. coli, Listeria. Mandatory. Non-negotiable.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ──────────────── INGREDIENTS ─────────────────── -->
-  <section class="section" style="background: var(--sand);">
-    <div class="wrap">
-      <div class="sh sh--center">
-        <span class="label label-sand">Ingredients</span>
-        <h2>Real food. Every single ingredient.</h2>
-        <p>No mystery powders. No synthetic flavours. Just whole, recognisable ingredients — the same ones you'd cook with at home.</p>
-      </div>
-      <div class="ingredients-grid">
-        <div class="ic"><div class="ic__icon">🌱</div><div class="ic__name">Turmeric</div><div class="ic__use">Anti-inflammatory</div></div>
-        <div class="ic"><div class="ic__icon">🧄</div><div class="ic__name">Fresh Ginger</div><div class="ic__use">Digestive aid</div></div>
-        <div class="ic"><div class="ic__icon">🫐</div><div class="ic__name">Blueberries</div><div class="ic__use">Antioxidants</div></div>
-        <div class="ic"><div class="ic__icon">🍠</div><div class="ic__name">Purple Sweet Potato</div><div class="ic__use">Natural calming</div></div>
-        <div class="ic"><div class="ic__icon">🥬</div><div class="ic__name">Fresh Spinach</div><div class="ic__use">Prebiotic fibre</div></div>
-        <div class="ic"><div class="ic__icon">🎃</div><div class="ic__name">Pumpkin</div><div class="ic__use">Gut health</div></div>
-        <div class="ic"><div class="ic__icon">🐟</div><div class="ic__name">Wild Salmon</div><div class="ic__use">Omega-3 fatty acids</div></div>
-        <div class="ic"><div class="ic__icon">🌸</div><div class="ic__name">Chamomile</div><div class="ic__use">Natural relaxant</div></div>
-        <div class="ic"><div class="ic__icon">🫘</div><div class="ic__name">Chia Seeds</div><div class="ic__use">Omega-3 &amp; fibre</div></div>
-        <div class="ic"><div class="ic__icon">🌿</div><div class="ic__name">Fennel Seeds</div><div class="ic__use">Digestive relief</div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ──────────────── COMPARISON ──────────────────── -->
+  <!-- ── INGREDIENTS ───────────────────── -->
   <section class="section">
     <div class="wrap">
-      <div class="sh sh--center">
-        <span class="label label-green">Head-to-Head</span>
-        <h2>NOURRI vs Freeze-Dried Luxury Brands</h2>
-        <p>You shouldn't have to choose between quality and affordability. We think you deserve both.</p>
+      <div class="sh sh--c">
+        <span class="lbl lbl-pink">Ingredients</span>
+        <h2>Real food.<br><em>Every single ingredient.</em></h2>
+        <p>No mystery powders. No synthetic flavours. Just whole, recognisable ingredients from Singapore supermarkets and wet markets.</p>
       </div>
-      <div class="compare-wrap">
-        <div class="compare-card compare-card--us">
-          <div class="compare-card__head">
+      <div class="ing-grid">
+        <div class="ing"><div class="ing__icon">🌱</div><div class="ing__name">Turmeric</div><div class="ing__use">Anti-inflammatory</div></div>
+        <div class="ing"><div class="ing__icon">🧄</div><div class="ing__name">Fresh Ginger</div><div class="ing__use">Digestive aid</div></div>
+        <div class="ing"><div class="ing__icon">🫐</div><div class="ing__name">Blueberries</div><div class="ing__use">Antioxidants</div></div>
+        <div class="ing"><div class="ing__icon">🍠</div><div class="ing__name">Purple Sweet Potato</div><div class="ing__use">Natural calming</div></div>
+        <div class="ing"><div class="ing__icon">🥬</div><div class="ing__name">Fresh Spinach</div><div class="ing__use">Prebiotic fibre</div></div>
+        <div class="ing"><div class="ing__icon">🎃</div><div class="ing__name">Pumpkin</div><div class="ing__use">Gut health</div></div>
+        <div class="ing"><div class="ing__icon">🌸</div><div class="ing__name">Chamomile</div><div class="ing__use">Natural relaxant</div></div>
+        <div class="ing"><div class="ing__icon">🫘</div><div class="ing__name">Chia Seeds</div><div class="ing__use">Omega-3 &amp; fibre</div></div>
+        <div class="ing"><div class="ing__icon">🌿</div><div class="ing__name">Fennel Seeds</div><div class="ing__use">Digestive relief</div></div>
+        <div class="ing"><div class="ing__icon">🐓</div><div class="ing__name">Chicken Breast</div><div class="ing__use">Lean protein base</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── COMPARISON ────────────────────── -->
+  <section class="section section--white">
+    <div class="wrap">
+      <div class="sh sh--c">
+        <span class="lbl lbl-pink">Head-to-Head</span>
+        <h2>NOURRI vs<br><em>Freeze-Dried Luxury Brands</em></h2>
+        <p>Quality and affordability shouldn't be mutually exclusive.</p>
+      </div>
+      <div class="compare">
+        <div class="cc cc--us">
+          <div class="cc__head">
             <span style="font-size:18px;">✦</span>
             <h3>NOURRI</h3>
-            <span class="compare-badge">Recommended</span>
+            <span class="cc__badge">Recommended</span>
           </div>
-          <ul class="compare-list">
-            <li><span class="ci-y">✓</span> 4 targeted functional health varieties</li>
-            <li><span class="ci-y">✓</span> 5–15 min chew + natural dental benefits</li>
-            <li><span class="ci-y">✓</span> S$20–26 per 50g — accessible premium</li>
-            <li><span class="ci-y">✓</span> Vibrant natural colours + botanicals</li>
-            <li><span class="ci-y">✓</span> Grain-free, single-protein base</li>
-            <li><span class="ci-y">✓</span> Fresh small-batch, made in Singapore</li>
-            <li><span class="ci-y">✓</span> Affordable for 70–80% of the market</li>
+          <ul class="cc__list">
+            <li><span class="cy">✓</span> 3 targeted functional health varieties</li>
+            <li><span class="cy">✓</span> 5–15 min chew + natural dental benefits</li>
+            <li><span class="cy">✓</span> S$20–23 per 50g — accessible premium</li>
+            <li><span class="cy">✓</span> Vibrant natural colours + botanical decoration</li>
+            <li><span class="cy">✓</span> Grain-free, single-protein base</li>
+            <li><span class="cy">✓</span> Made fresh in Singapore, small-batch</li>
           </ul>
         </div>
-        <div class="compare-card compare-card--them">
-          <div class="compare-card__head">
+        <div class="cc cc--them">
+          <div class="cc__head">
             <span style="font-size:18px;">◯</span>
             <h3>Freeze-Dried Luxury Brands</h3>
-            <span class="compare-badge">Generic</span>
+            <span class="cc__badge">Generic</span>
           </div>
-          <ul class="compare-list">
-            <li><span class="ci-n">✗</span> Generic "healthy" claims, no specific benefit</li>
-            <li><span class="ci-n">✗</span> Dissolves in ~30 seconds, no chew value</li>
-            <li><span class="ci-n">✗</span> S$28–40 per 50g</li>
-            <li><span class="ci-n">✗</span> Brown crumbles, no visual appeal</li>
-            <li><span class="ci-y">✓</span> Higher nutrition retention (95–97%)</li>
-            <li><span class="ci-y">✓</span> Longer shelf life (18–24 months)</li>
-            <li><span class="ci-n">✗</span> Only accessible for top 20–30% of market</li>
+          <ul class="cc__list">
+            <li><span class="cn">✗</span> Generic "healthy" claims, no specific benefit</li>
+            <li><span class="cn">✗</span> Dissolves in ~30 seconds, no chew value</li>
+            <li><span class="cn">✗</span> S$28–40 per 50g</li>
+            <li><span class="cn">✗</span> Brown crumbles, no visual appeal</li>
+            <li><span class="cy">✓</span> Higher nutrition retention (95–97%)</li>
+            <li><span class="cy">✓</span> Longer shelf life (18–24 months)</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ──────────────── TESTIMONIALS ────────────────── -->
-  <section class="section" style="background: var(--green-50);">
+  <!-- ── TESTIMONIALS ───────────────────── -->
+  <section class="section">
     <div class="wrap">
-      <div class="sh sh--center">
-        <span class="label label-green">Reviews</span>
-        <h2>Happy dogs. Happy owners.</h2>
-        <p>Early beta testers from our Singapore community.</p>
+      <div class="sh sh--c">
+        <span class="lbl lbl-pink">Reviews</span>
+        <h2>Happy dogs.<br><em>Happy owners.</em></h2>
       </div>
-      <div class="testimonials-grid">
+      <div class="testi">
         <div class="tc">
           <div class="tc__stars">★★★★★</div>
           <p class="tc__text">"My 9-year-old Golden finally has his bounce back. After 3 weeks on the Joint Support cookies I can see a real difference in how he gets up from his bed. These aren't just treats — they're medicine."</p>
           <div class="tc__author">
             <div class="tc__av">🐕</div>
-            <div>
-              <div class="tc__name">Sarah L.</div>
-              <div class="tc__sub">Golden Retriever · Bukit Timah</div>
-            </div>
+            <div><div class="tc__name">Sarah L.</div><div class="tc__sub">Golden Retriever · Bukit Timah</div></div>
           </div>
         </div>
         <div class="tc">
@@ -1111,10 +1025,7 @@
           <p class="tc__text">"My Shih Tzu used to bark non-stop whenever I left the house. Two weeks of the Calm &amp; Anxiety cookies and my neighbour finally stopped complaining. I'm genuinely shocked at how well they work."</p>
           <div class="tc__author">
             <div class="tc__av">🐩</div>
-            <div>
-              <div class="tc__name">Mei Lin T.</div>
-              <div class="tc__sub">Shih Tzu · Ang Mo Kio</div>
-            </div>
+            <div><div class="tc__name">Mei Lin T.</div><div class="tc__sub">Shih Tzu · Ang Mo Kio</div></div>
           </div>
         </div>
         <div class="tc">
@@ -1122,49 +1033,44 @@
           <p class="tc__text">"The cookies look so beautiful I almost felt bad giving them to the dog. You can literally see the spinach and herbs — real ingredients, not just label claims. My picky Frenchie finishes every one."</p>
           <div class="tc__author">
             <div class="tc__av">🐾</div>
-            <div>
-              <div class="tc__name">Alex K.</div>
-              <div class="tc__sub">French Bulldog · Tampines</div>
-            </div>
+            <div><div class="tc__name">Alex K.</div><div class="tc__sub">French Bulldog · Tampines</div></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ──────────────── NEWSLETTER ──────────────────── -->
-  <section class="section">
+  <!-- ── NEWSLETTER ─────────────────────── -->
+  <section class="section section--blush">
     <div class="wrap">
-      <div class="nl-box">
-        <span class="label label-white">Stay in the Loop</span>
-        <h2>Join the NOURRI community.</h2>
-        <p>Early access to new varieties, exclusive launch discounts and real science-backed pet wellness tips — straight to your inbox.</p>
+      <div class="nl">
+        <span class="lbl lbl-pink">Stay in the Loop</span>
+        <h2>Join the<br><em>NOURRI community.</em></h2>
+        <p>Early access to new varieties, exclusive launch discounts and science-backed pet wellness tips — straight to your inbox.</p>
         <form class="nl-form" id="nlForm" onsubmit="submitNL(event)">
           <input class="nl-input" type="email" placeholder="Your email address" required aria-label="Email" />
           <button class="nl-btn" type="submit">Subscribe</button>
         </form>
-        <p id="nlOk" class="nl-ok hidden">You're in! We'll be in touch soon. 🌿</p>
+        <p id="nlOk" class="nl-ok hidden">You're in! We'll be in touch soon. 🌸</p>
       </div>
     </div>
   </section>
 
-  <!-- ──────────────── FOOTER ───────────────────────── -->
+  <!-- ── FOOTER ─────────────────────────── -->
   <footer class="footer" id="contact">
     <div class="wrap">
       <div class="footer__grid">
-
         <div class="footer__brand">
-          <div class="nav__logo" style="color:#fff;margin-bottom:18px;">
-            NOURRI <span class="nav__logo-dot"></span>
+          <div class="footer__logo">
+            <img src="nourri_logo.jpg" alt="nourri" />
           </div>
-          <p>Functional wellness treats for dogs. Made fresh in Singapore with real ingredients, science-backed benefits and love for every furry family member.</p>
-          <div class="footer-socials">
+          <p>Functional wellness treats for dogs. Made fresh in Singapore with real ingredients, science-backed benefits, and love for every furry family member.</p>
+          <div class="footer__socials">
             <div class="fsb" title="Instagram">📷</div>
             <div class="fsb" title="TikTok">🎵</div>
             <div class="fsb" title="Facebook">📘</div>
           </div>
         </div>
-
         <div class="footer__col">
           <h5>Shop</h5>
           <ul>
@@ -1174,18 +1080,15 @@
             <li><a href="#bundle">Wellness Bundle</a></li>
           </ul>
         </div>
-
         <div class="footer__col">
           <h5>Learn</h5>
           <ul>
             <li><a href="#process">How It's Made</a></li>
-            <li><a href="#compare">Why NOURRI</a></li>
+            <li><a href="#about">About NOURRI</a></li>
             <li><a href="#">Our Ingredients</a></li>
-            <li><a href="#">Dog Nutrition Blog</a></li>
             <li><a href="#">FAQs</a></li>
           </ul>
         </div>
-
         <div class="footer__col">
           <h5>Contact</h5>
           <ul>
@@ -1196,25 +1099,21 @@
             <li><a href="#">Refund Policy</a></li>
           </ul>
         </div>
-
       </div>
-
       <div class="footer__bottom">
         <p>© 2026 NOURRI Pte Ltd · Singapore · All rights reserved.</p>
-        <div class="payment-badges">
-          <span class="pay-badge">VISA</span>
-          <span class="pay-badge">MC</span>
-          <span class="pay-badge">AMEX</span>
-          <span class="pay-badge">PayNow</span>
-          <span class="pay-badge">GrabPay</span>
+        <div class="pays">
+          <span class="pay">VISA</span>
+          <span class="pay">MC</span>
+          <span class="pay">PayNow</span>
+          <span class="pay">GrabPay</span>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- ──────────────── JS ────────────────────────────── -->
+  <!-- ── JS ─────────────────────────────── -->
   <script>
-    /* Cart */
     let count = 0;
     const countEl = document.getElementById('cartCount');
 
@@ -1223,12 +1122,12 @@
       countEl.textContent = count;
       const orig = btn.innerHTML;
       btn.textContent = '✓ Added!';
-      btn.style.opacity = '.7';
+      btn.style.opacity = '.65';
       setTimeout(() => { btn.innerHTML = orig; btn.style.opacity = '1'; }, 1600);
     }
 
     function addBundle(e) {
-      count += 4;
+      count += 3;
       countEl.textContent = count;
       const btn = e.currentTarget;
       const orig = btn.innerHTML;
@@ -1236,18 +1135,16 @@
       setTimeout(() => { btn.innerHTML = orig; }, 1800);
     }
 
-    /* Newsletter */
     function submitNL(e) {
       e.preventDefault();
       document.getElementById('nlForm').classList.add('hidden');
       document.getElementById('nlOk').classList.remove('hidden');
     }
 
-    /* Smooth scroll */
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', e => {
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+        const t = document.querySelector(a.getAttribute('href'));
+        if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
       });
     });
   </script>
